@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Radio Interface - Mobile</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="mobile.css">
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="walkie-talkie">
+      <div class="display">
+        <div class="status">Waiting for connection...</div>
+        <div class="pairing">
+          <input type="text" id="pairing-code" placeholder="Enter pairing code" maxlength="6" pattern="[0-9]*" inputmode="numeric">
+          <button id="pair-button">Pair</button>
+        </div>
+        <div class="active-frequency">Frequency: --.--- MHz</div>
+      </div>
+      <div class="speaker">
+        <div class="speaker-grill"></div>
+      </div>
+      <div class="speech-display">
+        <div class="speech-text" id="speech-text"></div>
+        <div class="speech-status" id="speech-status">Click and hold to speak</div>
+      </div>
+      <div class="controls">
+        <button class="push-to-talk" id="push-to-talk" disabled>
+          Push to Talk
+          <div class="transmission-indicator"></div>
+        </button>
+      </div>
+      <div class="messages" id="messages"></div>
+      <!-- Fallback text input for devices without speech recognition -->
+      <div class="fallback-input" style="display: none;">
+        <input type="text" class="fallback-text-input" id="fallback-text-input" placeholder="Type your message...">
+        <button id="fallback-send">Send</button>
+      </div>
+    </div>
+  </div>
+  
+  <audio id="static-audio" loop>
+    <source src="/shared/static.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="transmission-audio">
+    <source src="" type="audio/mpeg">
+  </audio>
+  
+  <script src="mobile.js"></script>
+</body>
+</html>
